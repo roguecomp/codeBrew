@@ -8,7 +8,7 @@ const config = {
     authDomain: "myapp-project-123.firebaseapp.com",
     databaseURL: "https://codebrew-b05f9.firebaseio.com",
     projectId: "codebrew-b05f9", 
-    storageBucket: "myapp-project-123.appspot.com", 
+    storageBucket: "codebrew-b05f9.appspot.com", 
     messagingSenderId: "1035866369641",
     appId: "1:1035866369641:web:98544609f76afac0777cf8", 
 }
