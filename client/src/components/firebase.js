@@ -1,36 +1,28 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
-import MainPage from './MainPage'
 
-
-const config = {
-
-    apiKey: "AIzaSyDHDERKxdA-LlIme9a9qI0Q7p9jJvFdJes", 
-    authDomain: "codebrew-b05f9.firebaseapp.com",
-    databaseURL: "https://codebrew-b05f9.firebaseio.com",
-    projectId: "codebrew-b05f9", 
-    storageBucket: "codebrew-b05f9.appspot.com", 
-    messagingSenderId: "1035866369641",
-    appId: "1:1035866369641:web:98544609f76afac0777cf8", 
-}
-
-firebase.initializeApp(config);
-
-export const auth = firebase.auth();
-
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => {
-    auth.signInWithPopup(provider);
-
-    auth.onAuthStateChanged( user => {
-        // Authentication was a success
-        
-        console.log(user); // information about the current user
-        
+if (!firebase.apps.length){
+    console.log(1)
+    console.log(process.env.REACT_APP_FIREBAE_API_KEY)
+    firebase.initializeApp({
+    
+        apiKey: process.env.REACT_APP_FIREBAE_API_KEY,
+        authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+        projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+        storageBucket:process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGE_SENDER_ID,
+        appId: process.env.REACT_APP_FIREBASE_APP_ID,
+        databaseURL: process.env.REACT_APP_DATABASE_URL
+    
     })
+
+    
+
 }
 
-export default firebase;
+const auth = firebase.auth();
 
+
+export {auth};
+export default firebase;

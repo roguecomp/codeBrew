@@ -10,12 +10,22 @@ import NavBar from './NavBar'
 
 function App() {
   const [currentPage, setCurrentPage] = React.useState('landing')
+  const [currentUser, setCurrentUser] =React.useState()
+
+  React.useEffect( () =>{
+    if (currentUser){
+      setCurrentPage('home')
+    }else{
+      setCurrentPage('landing')
+    }
+
+  }, [currentUser])
   return (
     <div className="App">
       <NavBar hideLinks = {(currentPage =="landing")? true:false} setCurrentPage = {setCurrentPage}/>
 
       <div className ='landingPage' style = {{display : (currentPage =="landing")? 'block':'none'}}>
-      <LandingPage/> 
+      <LandingPage setCurrentUser = {setCurrentUser}/> 
       </div> 
       <div className ='mainPage' style = {{display : (currentPage =="home")? 'block':'none'}}>
       <MainPage />

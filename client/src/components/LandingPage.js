@@ -5,20 +5,53 @@ import landing_img from '../asserts/landing_illu.svg';
 import top_circle from '../asserts/top_circle.svg';
 import Button from 'react-bootstrap/Button'
 import LandingImage from '../asserts/landing_illu2';
+import firebase , {auth}from './Firebase';
 
-import { signInWithGoogle } from './firebase';
+//import { signInwithGoogle } from './SignIn';
 
-class LandingPage extends React.Component {
+//import SignIn from './SignIn'
 
-    constructor() {
-        super();
 
-        this.state = {
-        currentUser: null
-        };
-    }
 
-    render() {
+function LandingPage(props) {
+    const {setCurrentUser } = props
+    const signInwithGoogle  =()=>{
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth()
+                .signInWithPopup(provider)
+                .then((result) => {
+                    /** @type {firebase.auth.OAuthCredential} */
+                    var credential = result.credential;
+    
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    var token = credential.accessToken;
+                    // The signed-in user info.
+                    var user = result.user;
+                    // ...
+                    console.log("sign in success")
+                    console.log(result)
+                    //setEmail(result.additionalUserInfo.profile.email);
+                    setCurrentUser(user)
+                   
+                  
+                }).catch((error) => {
+                    console.log(error)
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // The email of the user's account used.
+                    var email = error.email;
+                    // The firebase.auth.AuthCredential type that was used.
+                    var credential = error.credential;
+                    // ...
+                });
+            }
+    
+
+  
+
+   
+    
         return (
             <>
        
@@ -32,7 +65,7 @@ class LandingPage extends React.Component {
                             <h1>Make Team Contribution Tracking Effortless</h1>
                         </div>
                         <div className = 'button-wrapper'>
-                            <Button style = {{background:"#6C63FF" ,borderColor:"#6C63FF" }} onClick={signInWithGoogle}>Sign up with google</Button>
+                            <Button style = {{background:"#6C63FF" ,borderColor:"#6C63FF" }} onClick={signInwithGoogle}>Sign up with google</Button>
                         </div>
                         
                         <div className = "intro-sub-text">
@@ -51,6 +84,6 @@ class LandingPage extends React.Component {
             </>
         )
     }
-}
+
 
 export default LandingPage;
