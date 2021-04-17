@@ -32,6 +32,7 @@ function LandingPage(props) {
                     console.log(result)
                     //setEmail(result.additionalUserInfo.profile.email);
                     setCurrentUser(user)
+                    //window.open('http://localhost:3000/trackingsystem')
                    
                   
                 }).catch((error) => {
@@ -46,6 +47,23 @@ function LandingPage(props) {
                     // ...
                 });
             }
+
+    
+    
+    // function signIn(){
+    
+    //     var win = window.open('/systemtracking');
+    //     win.focus();
+    //     // window.oldOpen = window.open;
+    //     // window.open = function(url) { // reassignment function
+    //     //     win.location = url;
+    //     //     window.open = window.oldOpen;
+    //     //     win.focus();
+    //     // }
+    //     signInwithGoogle() 
+
+
+    // }
     
 
   
@@ -55,7 +73,7 @@ function LandingPage(props) {
         return (
             <>
        
-        
+            {/* <NavBar hideLinks = {true} /> */}
             <img className = 'top-circle' src ={top_circle} />
         
             <main>
