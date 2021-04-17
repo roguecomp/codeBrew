@@ -30,19 +30,31 @@ export default function TeamPage(){
             tasksList.push({ id : _id, ...tasks[id] });
           }
           setTasks(tasksList);
-        });   
+        });
+
+        const membersRef = firebase.database().ref('projects/' + projectId  + "/members");
+        membersRef.on('value', (snapshot) => {
+            console.log(snapshot.val())
+            const member = snapshot.val();
+            const membersList = [];
+            for (let _id in member) {
+                membersList.push({ id : _id, ...member[_id] });
+            }
+            setMembers(membersList);
+          
+        }); 
       }, [])
 
     const handleEdit= () => {}
     const handleDelete= (id) => {
-        const tasksRef = firebase.database().ref('Task').child(id);
+        const tasksRef = firebase.database().ref('projects/' + projectId   + "/task").child(id);
         tasksRef.remove()
     }
     const handleRemove = () => {}
     const handleAddTask = () => {
         const taskName = "fake task" + tasks.length
         const taskDescription = "Later on we will provide a form to fill the details of the task"
-        const taskRef = firebase.database().ref('Task');
+        const taskRef = firebase.database().ref('projects/' + projectId   + "/task");
         const newTask = {
             name: taskName,
             description : taskDescription,
@@ -51,7 +63,6 @@ export default function TeamPage(){
     }
     return (
         <div>
-        <NavBar hideLinks = {false}/>
         <Container>
             <Row>
                 <Col md = {7}>
@@ -114,10 +125,10 @@ export default function TeamPage(){
                         {members.map(member => (
                         <>
                         <Row>
-                        <Col md = {3}><Avatar>{member.name[0]}</Avatar></Col>
+                        <Col md = {3}><Avatar>{member.memberName[0]}</Avatar></Col>
                         <Col md = {5}>        
-                        <Row><text className = "MemberName">{member.name}</text></Row>
-                        <Row><text className = "MemberEmail">{member.email}</text></Row>
+                        <Row><text className = "MemberName">{member.memberName}</text></Row>
+                        <Row><text className = "MemberEmail">{member.memberEmail}</text></Row>
                         </Col>   
                             <Col md = {3}><Button 
                                 variant = "light"
