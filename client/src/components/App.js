@@ -9,7 +9,7 @@ import NavBar from './NavBar'
 
 
 function App() {
-  const [currentPage, setCurrentPage] = React.useState('home')
+  const [currentPage, setCurrentPage] = React.useState('landing')
   return (
     <div className="App">
       <NavBar hideLinks = {(currentPage =="landing")? true:false} setCurrentPage = {setCurrentPage}/>

@@ -98,6 +98,7 @@ nav{
   
 }
 
+
 .intro-sub-text{
   color : rgba(0, 0, 0, 0.6);
 }
@@ -126,9 +127,47 @@ nav{
   margin: 2em;
 }
 
-.landing-img img{
-  height : 60vh;
+.landing-img{
+  animation : my_float 4s ease infinite;
 }
+
+
+@keyframes my_float {
+  0% {
+
+    transform:  translate(0px, 0px)
+  }
+  50%{
+    transform:  translate(0px, 20px)
+
+  }
+  100%{
+    transform:  translate(0px,0px)
+
+  }
+  
+  
+}
+
+#ticking_rec{
+  animation: clock_tick 60s linear infinite;
+  transform-origin: bottom;
+  transform-box: fill-box; 
+}
+
+@keyframes clock_tick{
+  from {
+    transform: rotateZ(0deg);
+  }
+  to{
+    transform: rotateZ(360deg);
+
+  }
+}
+
+
+
+
 
 /*---------- --------- */
 

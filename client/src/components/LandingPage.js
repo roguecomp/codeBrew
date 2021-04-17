@@ -1,8 +1,10 @@
 import React from 'react'
 import NavBar from './NavBar'
 import landing_img from '../asserts/landing_illu.svg';
+// import landing_img2 from '../asserts/landing_illu2.svg';
 import top_circle from '../asserts/top_circle.svg';
 import Button from 'react-bootstrap/Button'
+import LandingImage from '../asserts/landing_illu2';
 
 import { signInWithGoogle } from './firebase';
 
@@ -40,7 +42,8 @@ class LandingPage extends React.Component {
                     </div>
                     
                     <div className = 'landing-img'>
-                        <img src ={landing_img} />
+                        {/* <img src ={landing_img2} /> */}
+                        <LandingImage/>
                     </div>
 
                 </section>
