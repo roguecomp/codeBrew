@@ -3,10 +3,8 @@ import NavBar from './NavBar'
 import landing_img from '../asserts/landing_illu.svg';
 import top_circle from '../asserts/top_circle.svg';
 import Button from 'react-bootstrap/Button'
-import firebase from 'firebase';
 
 import { signInWithGoogle } from './firebase';
-import { auth } from './firebase';
 
 function LandingPage(){
     return (
