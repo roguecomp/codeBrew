@@ -65,6 +65,7 @@ header {
   flex : 1;
   color :#2436D3;
   font-weight: bold;
+  cursor: pointer;
 
 }
 
@@ -78,6 +79,11 @@ nav{
 }
 .nav-link{
   flex : 1;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
 }
 
 /*---------- --------- */

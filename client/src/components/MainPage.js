@@ -10,7 +10,7 @@ function MainPage () {
 
     return (
         <>
-        <NavBar hideLinks = {false} />
+        
         <div className="my-card profile-card">
             <img src = {sampleAvatar}/>
             

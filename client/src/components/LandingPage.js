@@ -19,7 +19,7 @@ class LandingPage extends React.Component {
     render() {
         return (
             <>
-            <NavBar hideLinks = {true} />
+       
         
             <img className = 'top-circle' src ={top_circle} />
         
