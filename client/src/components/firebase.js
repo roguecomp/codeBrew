@@ -23,7 +23,8 @@ export const signInWithGoogle = () => {
     auth.signInWithPopup(provider);
 
     auth.onAuthStateChanged( user => {
-        console.log(user);
+        // Authentication was a success
+        export const user;
     })
 }
 
