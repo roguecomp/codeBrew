@@ -23,10 +23,10 @@ function App() {
   }, [currentUser])
   return (
     <div className="App">
-      <NavBar hideLinks = {(currentPage =="landing")? true:false} setCurrentPage = {setCurrentPage}/>
+      <NavBar hideLinks = {(currentUser)? false:true} setCurrentPage = {setCurrentPage}/>
 
       <div className ='landingPage' style = {{display : (currentPage =="landing")? 'block':'none'}}>
-      <LandingPage setCurrentUser = {setCurrentUser}/> 
+      <LandingPage setCurrentUser = {setCurrentUser} currentUser = {currentUser}/> 
       </div> 
       <div className ='mainPage' style = {{display : (currentPage =="home")? 'block':'none'}}>
       <MainPage />

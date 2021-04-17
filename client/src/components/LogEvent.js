@@ -15,4 +15,4 @@ function LogTimeRecord(receiverProjectId,receiverUid,duration, task ){
 
 
 
-export default LogEvent; 
+export  {LogTimeRecord}; 
