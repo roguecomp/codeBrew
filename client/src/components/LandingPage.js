@@ -6,40 +6,48 @@ import Button from 'react-bootstrap/Button'
 
 import { signInWithGoogle } from './firebase';
 
-function LandingPage(){
-    return (
-        <>
-        <NavBar hideLinks = {true} />
-    
-        <img className = 'top-circle' src ={top_circle} />
-       
-        <main>
-            <section className = 'presentation'>
-                <div className = "intro">
-                    <div className = "intro-text">
-                        <h1>Make Team Contribution Tracking Effortless</h1>
-                    </div>
-                    <div className = 'button-wrapper'>
-                        <Button style = {{background:"#6C63FF" ,borderColor:"#6C63FF" }} onClick={signInWithGoogle}>Sign in with google</Button>
-                        {"   or   "}
-                        <Button style = {{background:"#6C63FF" ,borderColor:"#6C63FF" }} className = 'sign-up'>sign Up</Button>
+class LandingPage extends React.Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+        currentUser: null
+        };
+    }
+
+    render() {
+        return (
+            <>
+            <NavBar hideLinks = {true} />
+        
+            <img className = 'top-circle' src ={top_circle} />
+        
+            <main>
+                <section className = 'presentation'>
+                    <div className = "intro">
+                        <div className = "intro-text">
+                            <h1>Make Team Contribution Tracking Effortless</h1>
+                        </div>
+                        <div className = 'button-wrapper'>
+                            <Button style = {{background:"#6C63FF" ,borderColor:"#6C63FF" }} onClick={signInWithGoogle}>Sign up with google</Button>
+                        </div>
+                        
+                        <div className = "intro-sub-text">
+                            <span>Get start for free. No credit card required.</span>
+                        </div>
 
                     </div>
                     
-                    <div className = "intro-sub-text">
-                        <span>Get start for free. No credit card required.</span>
+                    <div className = 'landing-img'>
+                        <img src ={landing_img} />
                     </div>
 
-                </div>
-                
-                <div className = 'landing-img'>
-                    <img src ={landing_img} />
-                </div>
-
-            </section>
-        </main>
-        </>
-    )
+                </section>
+            </main>
+            </>
+        )
+    }
 }
 
 export default LandingPage;
