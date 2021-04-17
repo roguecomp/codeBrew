@@ -5,7 +5,6 @@ import MainPage from './MainPage'
 import '../css/App.css';
 import React from 'react';
 import NavBar from './NavBar'
-import TeamPage from './TeamPage';
 
 
 
@@ -32,7 +31,7 @@ function App() {
       <MainPage />
       </div>
       <div className ='teamPage' style = {{display : (currentPage =="team")? 'block':'none'}}>
-      <TeamPage />
+      <teamPage />
       </div>
       
 
