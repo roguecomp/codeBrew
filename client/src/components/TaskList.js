@@ -35,6 +35,7 @@ function TaskList(){
             ref.current.addEventListener("dragstart", dragStart, false);
             try{
                 if (ref.current){
+                    console.log('ref pushed')
                     toRemove.push(()=>{
                         ref.current.removeEventListener("dragstart", dragStart, false);
                     })
@@ -53,7 +54,7 @@ function TaskList(){
         )
 
 
-    }, [])
+    }, [ tasks])
 
 
 
