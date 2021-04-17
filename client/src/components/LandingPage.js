@@ -5,7 +5,6 @@ import top_circle from '../asserts/top_circle.svg';
 import Button from 'react-bootstrap/Button'
 import firebase from 'firebase';
 import app from 'firebase'
-import Firebase_auth from 'firebase'
 
 app.initializeApp();
 

@@ -1,4 +1,3 @@
-import { FirebaseAuthProvider } from '@react-firebase/auth';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
@@ -15,16 +14,6 @@ const app = firebase.initializeApp({
     messagingSenderId: "65211879809",
     appId: "1:65211879909:web:3ae38ef1cdcb2e01fe5f0c", 
 })
-
-export function Firebase_auth() {
-    return (
-        <FirebaseAuthProvider firebase={firebase} {...config} >
-            {
-                //app code
-            }
-        </FirebaseAuthProvider>
-    )
-}
 
 export {auth};
 export default {app};
