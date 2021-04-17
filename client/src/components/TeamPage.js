@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from 'react'
 import { Button,Container,Col, Row } from 'react-bootstrap';
 import {Avatar} from '@material-ui/core'
-import firebase from './firebase'
+import firebase from './Firebase'
 import NavBar from './NavBar'
 import '../css/TeamPage.css'
 
@@ -21,13 +21,15 @@ export default function TeamPage(){
         */
     const [tasks, setTasks] = useState([])
     const [members, setMembers] = useState([])
+    const projectId = 'project111231414';
     useEffect(() => {
-        const tasksRef = firebase.database().ref('Task');
+        const tasksRef = firebase.database().ref('projects/' + projectId   + "/task");
         tasksRef.on('value', (snapshot) => {
           const tasks = snapshot.val();
+          console.log(tasks)
           const tasksList = [];
           for (let _id in tasks) {
-            tasksList.push({ id : _id, ...tasks[id] });
+            tasksList.push({ id : _id, ...tasks[_id] });
           }
           setTasks(tasksList);
         });   
