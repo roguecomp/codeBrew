@@ -127,112 +127,171 @@ nav{
 /*---------- --------- */
 
 /*---------- Timer display --------- */
+.my-card{
+  background: #FFFFFF;
+  box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  text-align: center;
+  margin : auto;
+  z-index:  -1;
+  align-items: center;
+  width : 70%;
+  margin-top: 2em;
 
-.circular{
-  height: 100px;
-  width: 100px;
-  position: relative;
 }
-.circular .inner, .circular .outer, .circular .circle{
-  position: absolute;
-  z-index: 6;
-  height: 100%;
-  width: 100%;
-  border-radius: 100%;
-  box-shadow: inset 0 1px 0 rgba(0,0,0,0.2);
+
+.profile-card{
+  height : 10vh;
 }
-.circular .inner{
-  top: 50%;
-  left: 50%;
-  height: 80px;
-  width: 80px;
-  margin: -40px 0 0 -40px;
-  background-color: #dde6f0;
-  border-radius: 100%;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+.timer-card{
+  
+  height: 65vh;
+  display: flex;
+  padding : 1em;
+
+  
 }
-.circular .circle{
-  z-index: 1;
-  box-shadow: none;
+
+.timer-col {
+
+  flex : 1;
 }
-.circular .numb{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  font-size: 18px;
-  font-weight: 500;
-  color: #4158d0;
+
+.taskList-wrapper{
+  flex : 1;
 }
-.circular .bar{
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: #fff;
-  -webkit-border-radius: 100%;
-  clip: rect(0px, 100px, 100px, 50px);
+.timer-wrapper{
+  height :60%;
+  display: flex;
+  justify-content: center;
+  margin : 2em;
+  
 }
-.circle .bar .progress{
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  -webkit-border-radius: 100%;
-  clip: rect(0px, 50px, 100px, 0px);
+
+.timer-text{
+  color : black;
 }
-.circle .bar .progress, .dot span{
-  background: #4158d0;
+.timer-text > .text{
+  font-size : 1vw;
 }
-.circle .left .progress{
-  z-index: 1;
-  animation: left 4s linear both;
+.timer-text > .value{
+  font-size : 2vw;
 }
-@keyframes left {
-  100%{
-    transform: rotate(180deg);
-  }
+.timer-card-header-text{
+  font-size : 2vw;
+
 }
-.circle .right{
-  z-index: 3;
-  transform: rotate(180deg);
+/* ------- Task board----------------  */
+
+.task-bar{
+
+  background-color: #E1E1E1;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 91px;
+  width : 50%;
+  min-height : 20%;
+  height : 25%;
+  margin: auto;
+  display:inline-block;
 }
-.circle .right .progress{
-  animation: right 4s linear both;
-  animation-delay: 4s;
+
+.task-board{
+  background: rgba(196, 196, 196, 0.41);
+  border-radius: 49px;
+  display:flex;
+  height : 30vh;
+  width: 70%;
+  margin-left: 4em;
+  flex-wrap: wrap;
+  padding : 1em;
+  overflow-y: scroll;
 }
-@keyframes right {
-  100%{
-    transform: rotate(180deg);
-  }
+
+.task-badge{
+  font-style: large;
+  padding: 5px;
+  margin : 1em;
+  
 }
-.circle .dot{
-  z-index: 2;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 50%;
-  height: 10px;
-  margin-top: -5px;
-  animation: dot 8s linear both;
-  transform-origin: 0% 50%;
+
+.draggable{
+  cursor: move;
+  transition: opacity 0.2s;
+  
 }
-.circle .dot span {
-  position: absolute;
-  right: 0;
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
+
+.draggable:hover {
+  opacity: 0.5;
 }
-@keyframes dot{
-  0% {
-    transform: rotate(-90deg);
-  }
-  50% {
-    transform: rotate(90deg);
-    z-index: 4;
-  }
-  100% {
-    transform: rotate(270deg);
-    z-index: 4;
-  }
+
+.droppable{
+  background-color: #fff;
+  border: 3px dashed #111;
+  transition: border-width 0.2s, transform 0.2s, background-color 0.4s;
+
 }
+
+/* Drag and Drop Related Styling */
+
+.droppable.droppable-hover {
+  /* background-color: #bee3f0; */
+  border-width: 5px;
+  transform: scale(1.1);
+}
+.droppable.dropped {
+  border-style: solid;
+  color: #fff;
+}
+.droppable.dropped span {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+.droppable.dropped i {
+  pointer-events: none;
+}
+.draggable.dragged {
+  user-select: none;
+  opacity: 0.1;
+  cursor: default;
+}
+.draggable.dragged:hover {
+  opacity: 0.1;
+}
+
+/* ------------------------------ */
+
+
+/* ------------profile card ---------------- */
+
+.profile-card{
+  display : flex;
+  padding : 2em;
+}
+.profile-card img{
+  height : 5vh;
+  margin : 1em;
+}
+
+
+
+/* ------------------------------ */
+
+/* ---------arrow indicator ------------------- */
+.arrow-wrapper{
+  position : relative;
+  left : 10em;
+  top  : 2em;
+
+
+}
+.arrow-wrapper img{
+  height : 12vh;
+}
+
+.sudo-arrow-wrapper{
+  height  : 0;
+}
+
+
+
+
