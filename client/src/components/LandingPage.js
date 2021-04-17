@@ -20,7 +20,7 @@ function LandingPage(){
                         <h1>Make Team Contribution Tracking Effortless</h1>
                     </div>
                     <div className = 'button-wrapper'>
-                        <button style = {{background:"#6C63FF" ,borderColor:"#6C63FF" }} onClick={signInWithGoogle}>Sign in with google</button>
+                        <Button style = {{background:"#6C63FF" ,borderColor:"#6C63FF" }} onClick={signInWithGoogle}>Sign in with google</Button>
                         {"   or   "}
                         <Button style = {{background:"#6C63FF" ,borderColor:"#6C63FF" }} className = 'sign-up'>sign Up</Button>
 
