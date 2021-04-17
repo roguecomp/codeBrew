@@ -5,7 +5,7 @@ import 'firebase/database';
 const config = {
 
     apiKey: "AIzaSyDHDERKxdA-LlIme9a9qI0Q7p9jJvFdJes", 
-    authDomain: "myapp-project-123.firebaseapp.com",
+    authDomain: "codebrew-b05f9.firebaseapp.com",
     databaseURL: "https://codebrew-b05f9.firebaseio.com",
     projectId: "codebrew-b05f9", 
     storageBucket: "codebrew-b05f9.appspot.com", 
