@@ -2,14 +2,16 @@ import React from 'react'
 import NavBar from './NavBar'
 import TimeDisplay from './TimeDisplay'
 
-function MainPage(){
+class MainPage extends React.Component {
 
-    return (
-        <>
-        <NavBar hideLinks = {false} />
-        <TimeDisplay />
-        </>
-    )
+    render() { 
+        return (
+            <>
+            <NavBar hideLinks = {false} />
+            <TimeDisplay />
+            </>
+        )
+    }
 
 }
 

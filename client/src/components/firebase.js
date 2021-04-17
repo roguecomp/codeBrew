@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import MainPage from './MainPage'
+
 
 const config = {
 
@@ -24,7 +26,9 @@ export const signInWithGoogle = () => {
 
     auth.onAuthStateChanged( user => {
         // Authentication was a success
-        export const user;
+        
+        console.log(user); // information about the current user
+        
     })
 }
 

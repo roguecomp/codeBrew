@@ -34,7 +34,7 @@ class LandingPage extends React.Component {
                         </div>
                         
                         <div className = "intro-sub-text">
-                            <span>Get start for free. No credit card required.</span>
+                            <span>Get started for free. No credit card required.</span>
                         </div>
 
                     </div>
