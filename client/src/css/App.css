@@ -98,6 +98,7 @@ nav{
   
 }
 
+
 .intro-sub-text{
   color : rgba(0, 0, 0, 0.6);
 }
@@ -126,9 +127,64 @@ nav{
   margin: 2em;
 }
 
-.landing-img img{
-  height : 60vh;
+.landing-img{
+  animation : my_float 4s ease infinite;
 }
+
+
+@keyframes my_float {
+  0% {
+
+    transform:  translate(0px, 0px)
+  }
+  50%{
+    transform:  translate(0px, 20px)
+
+  }
+  100%{
+    transform:  translate(0px,0px)
+
+  }
+  
+  
+}
+
+#ticking_rec{
+  animation: clock_tick 60s linear infinite;
+  transform-origin: bottom;
+  transform-box: fill-box; 
+}
+
+@keyframes clock_tick{
+  from {
+    transform: rotateZ(0deg);
+  }
+  to{
+    transform: rotateZ(360deg);
+
+  }
+}
+
+.moving-circle{
+  /* animation: cloud_fade 6s; */
+  display : None;
+
+}
+
+@keyframes cloud_fade {
+  from {
+
+    transform:  translate(0px, 0px)
+  }
+  to{
+    transform:  translate(300px, -300px)
+
+  }
+
+  
+}
+
+
 
 /*---------- --------- */
 
@@ -232,29 +288,31 @@ nav{
 
 .droppable{
   background-color: #fff;
-  border: 3px dashed #111;
+  border: 2px dashed #111;
   transition: border-width 0.2s, transform 0.2s, background-color 0.4s;
-
+  height : 5vh;
 }
 
 /* Drag and Drop Related Styling */
 
 .droppable.droppable-hover {
   /* background-color: #bee3f0; */
-  border-width: 5px;
+  border-width: 4px;
   transform: scale(1.1);
 }
 .droppable.dropped {
   border-style: solid;
-  color: #fff;
+  color:rgb(0, 0, 0);
+  background-color:  rgb(58, 104, 255, 40%);
+  font-size: 1.5vw;
 }
-.droppable.dropped span {
+/* .droppable.dropped span {
   font-size: 0.75rem;
   margin-top: 0.5rem;
 }
 .droppable.dropped i {
   pointer-events: none;
-}
+} */
 .draggable.dragged {
   user-select: none;
   opacity: 0.1;

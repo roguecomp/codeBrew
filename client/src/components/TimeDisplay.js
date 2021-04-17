@@ -3,6 +3,9 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import Button from 'react-bootstrap/Button'
 import  {dragEnter,dragOver,dragLeave} from './Dnd'
 import Arrow from '../asserts/Arrow.svg'
+import Badge from 'react-bootstrap/Badge'
+import {LogTimeRecord} from './LogEvent'
+import firebase, {auth} from './Firebase'
 
 function TimeDisplay(){
     const [totalTime, setTotalTimer] = useState(0)
@@ -23,6 +26,9 @@ function TimeDisplay(){
         const draggableElementData = event.dataTransfer.getData("text");
         console.log(draggableElementData)
         setCurrentTask(draggableElementData)
+        event.target.classList.add('dropped')
+       
+
     }
     
     useEffect(()=>{
@@ -80,15 +86,23 @@ function TimeDisplay(){
         )
 
       }
+
+    
     
     function onComplete(totalElapsedTime){
         setRingCompleted(true)
         return ([true,0])
     }
-
+    const projectId = 'project111231414';
     function stopTimer(){
         setIsRunning(false)
         // log data to the database 
+        var uid = firebase.auth().currentUser.uid;
+        LogTimeRecord(projectId,uid, totalTime, currentTask )
+        alert(`🎉 Time logged. Detail: ${Math.round(totalTime/3600*100)/100} hours have been 
+        spent on task ${currentTask} for project ${projectId}`)
+        
+        
         console.log(totalTime)
         // clear totalTime 
         setTotalTimer(0)
@@ -101,15 +115,16 @@ function TimeDisplay(){
     return (
         <>
         <div className="timer-col">
-        <div className = 'timer-card-header-text'>I'm doing...</div>
+        <div className = 'timer-card-header-text' style ={{fontSize :'1.5vw'}}>I'm doing...</div>
         <div className = 'sudo-arrow-wrapper'>
             <div className = 'arrow-wrapper'>
                 <div style = {{fontSize :'1vw'}}>drag a task </div>
                 <img src = {Arrow} /></div>
         </div>
         
-        <div className = 'task-bar droppable' ref = {dropRef} 
-        > {currentTask == "" ? 'put your task here':currentTask}
+        <div className = 'task-bar droppable' ref = {dropRef} > 
+        {currentTask == "" ? 'put your task here':currentTask}
+        
         
         </div>
         <div className= 'timer-wrapper'>

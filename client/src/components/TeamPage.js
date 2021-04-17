@@ -1,7 +1,7 @@
 import React, {useState, useEffect } from 'react'
 import { Button,Container,Col, Row } from 'react-bootstrap';
 import {Avatar} from '@material-ui/core'
-import firebase from './firebase'
+import firebase from './Firebase'
 import NavBar from './NavBar'
 import '../css/TeamPage.css'
 
@@ -21,28 +21,41 @@ export default function TeamPage(){
         */
     const [tasks, setTasks] = useState([])
     const [members, setMembers] = useState([])
+    const projectId = 'project111231414';
     useEffect(() => {
-        const tasksRef = firebase.database().ref('Task');
+        const tasksRef = firebase.database().ref('projects/' + projectId   + "/task");
         tasksRef.on('value', (snapshot) => {
           const tasks = snapshot.val();
           const tasksList = [];
           for (let _id in tasks) {
-            tasksList.push({ id : _id, ...tasks[id] });
+            tasksList.push({ id : _id, ...tasks[_id] });
           }
           setTasks(tasksList);
-        });   
+        });
+
+        const membersRef = firebase.database().ref('projects/' + projectId  + "/members");
+        membersRef.on('value', (snapshot) => {
+            console.log(snapshot.val())
+            const member = snapshot.val();
+            const membersList = [];
+            for (let _id in member) {
+                membersList.push({ id : _id, ...member[_id] });
+            }
+            setMembers(membersList);
+          
+        }); 
       }, [])
 
     const handleEdit= () => {}
     const handleDelete= (id) => {
-        const tasksRef = firebase.database().ref('Task').child(id);
+        const tasksRef = firebase.database().ref('projects/' + projectId   + "/task").child(id);
         tasksRef.remove()
     }
     const handleRemove = () => {}
     const handleAddTask = () => {
         const taskName = "fake task" + tasks.length
         const taskDescription = "Later on we will provide a form to fill the details of the task"
-        const taskRef = firebase.database().ref('Task');
+        const taskRef = firebase.database().ref('projects/' + projectId   + "/task");
         const newTask = {
             name: taskName,
             description : taskDescription,
@@ -51,7 +64,6 @@ export default function TeamPage(){
     }
     return (
         <div>
-        <NavBar hideLinks = {false}/>
         <Container>
             <Row>
                 <Col md = {7}>
@@ -114,10 +126,10 @@ export default function TeamPage(){
                         {members.map(member => (
                         <>
                         <Row>
-                        <Col md = {3}><Avatar>{member.name[0]}</Avatar></Col>
+                        <Col md = {3}><Avatar>{member.memberName? member.memberName[0] : "A"}</Avatar></Col>
                         <Col md = {5}>        
-                        <Row><text className = "MemberName">{member.name}</text></Row>
-                        <Row><text className = "MemberEmail">{member.email}</text></Row>
+                        <Row><text className = "MemberName">{member.memberName}</text></Row>
+                        <Row><text className = "MemberEmail">{member.memberEmail}</text></Row>
                         </Col>   
                             <Col md = {3}><Button 
                                 variant = "light"
@@ -138,6 +150,5 @@ export default function TeamPage(){
         </div>
     )
 }
-
 
 

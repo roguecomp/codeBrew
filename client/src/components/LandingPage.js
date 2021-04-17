@@ -1,27 +1,88 @@
 import React from 'react'
 import NavBar from './NavBar'
 import landing_img from '../asserts/landing_illu.svg';
+// import landing_img2 from '../asserts/landing_illu2.svg';
 import top_circle from '../asserts/top_circle.svg';
+import cloud from '../asserts/cloud.svg';
 import Button from 'react-bootstrap/Button'
+import LandingImage from '../asserts/landing_illu2';
+import firebase , {auth}from './Firebase';
 
-import { signInWithGoogle } from './firebase';
+//import { signInwithGoogle } from './SignIn';
 
-class LandingPage extends React.Component {
+//import SignIn from './SignIn'
 
-    constructor() {
-        super();
 
-        this.state = {
-        currentUser: null
-        };
-    }
 
-    render() {
+function LandingPage(props) {
+    const {setCurrentUser , currentUser } = props
+    const [isLogin, setIsLogin] = React.useState(false)
+    React.useEffect(() =>{
+        const _isLogin = currentUser?true : false;
+        setIsLogin(_isLogin)
+
+    }, [currentUser])
+
+    const signInwithGoogle  =()=>{
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth()
+                .signInWithPopup(provider)
+                .then((result) => {
+                    /** @type {firebase.auth.OAuthCredential} */
+                    var credential = result.credential;
+    
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    var token = credential.accessToken;
+                    // The signed-in user info.
+                    var user = result.user;
+                    // ...
+                    console.log("sign in success")
+                    console.log(result)
+                    //setEmail(result.additionalUserInfo.profile.email);
+                    setCurrentUser(user)
+                    //window.open('http://localhost:3000/trackingsystem')
+                   
+                  
+                }).catch((error) => {
+                    console.log(error)
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // The email of the user's account used.
+                    var email = error.email;
+                    // The firebase.auth.AuthCredential type that was used.
+                    var credential = error.credential;
+                    // ...
+                });
+            }
+
+    
+    
+    // function signIn(){
+    
+    //     var win = window.open('/systemtracking');
+    //     win.focus();
+    //     // window.oldOpen = window.open;
+    //     // window.open = function(url) { // reassignment function
+    //     //     win.location = url;
+    //     //     window.open = window.oldOpen;
+    //     //     win.focus();
+    //     // }
+    //     signInwithGoogle() 
+
+
+    // }
+    
+
+  
+
+   
+    
         return (
             <>
        
-        
-            <img className = 'top-circle' src ={top_circle} />
+            {/* <NavBar hideLinks = {true} /> */}
+            <img className = {isLogin?'top-circle moving-circle':'top-circle'} src ={cloud} />
         
             <main>
                 <section className = 'presentation'>
@@ -30,7 +91,7 @@ class LandingPage extends React.Component {
                             <h1>Make Team Contribution Tracking Effortless</h1>
                         </div>
                         <div className = 'button-wrapper'>
-                            <Button style = {{background:"#6C63FF" ,borderColor:"#6C63FF" }} onClick={signInWithGoogle}>Sign up with google</Button>
+                            <Button style = {{background:"#6C63FF" ,borderColor:"#6C63FF" }} onClick={signInwithGoogle}>Sign up with google</Button>
                         </div>
                         
                         <div className = "intro-sub-text">
@@ -40,7 +101,8 @@ class LandingPage extends React.Component {
                     </div>
                     
                     <div className = 'landing-img'>
-                        <img src ={landing_img} />
+                        {/* <img src ={landing_img2} /> */}
+                        <LandingImage/>
                     </div>
 
                 </section>
@@ -48,6 +110,6 @@ class LandingPage extends React.Component {
             </>
         )
     }
-}
+
 
 export default LandingPage;
