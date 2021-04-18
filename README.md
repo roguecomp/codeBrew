@@ -7,12 +7,16 @@ The inspiration of this applciation is to make a free, lightweight web applicati
 
 
 
-demo link : 
+## demo link : 
 https://trackortri.web.app/
 
-ScreenShots : 
+## ScreenShots : 
+![codebrew2](https://user-images.githubusercontent.com/55317028/115135663-71685e00-a05d-11eb-841b-cc501e8f9763.jpg)
 
-[codebrew.pdf](https://github.com/roguecomp/codeBrew/files/6330544/codebrew.pdf)
-[codebrew2.pdf](https://github.com/roguecomp/codeBrew/files/6330545/codebrew2.pdf)
-[codebre3.pdf](https://github.com/roguecomp/codeBrew/files/6330546/codebre3.pdf)
-[codebre4.pdf](https://github.com/roguecomp/codeBrew/files/6330547/codebre4.pdf)
+![codebre3](https://user-images.githubusercontent.com/55317028/115135656-5dbcf780-a05d-11eb-9cfe-e45c2b9c30e1.jpg)
+
+
+![codebrew](https://user-images.githubusercontent.com/55317028/115135681-87761e80-a05d-11eb-9bc6-e05e1bc2c6e2.jpg)
+
+![codebre4](https://user-images.githubusercontent.com/55317028/115135693-a70d4700-a05d-11eb-9f92-7ebff370b233.jpg)
+
