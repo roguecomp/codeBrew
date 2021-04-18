@@ -15,7 +15,7 @@ function DashboardPage () {
         let durations = keys.map((m) => {
             return parseInt(member["timeRecord"][`${m}`]["duration"]);
         });
-        return `${durations.reduce((accumulator, currentValue) => accumulator + currentValue) / 60} hours`;
+        return `${(durations.reduce((accumulator, currentValue) => accumulator + currentValue) / 60).toFixed(2)} hours`;
     }
 
     const [members, setMembers] = useState([])
