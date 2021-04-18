@@ -1,5 +1,5 @@
 function dragStart(event) {
-    //console.log(event.target.children[0].innerHTML)
+    console.log(event.target.children[0].innerHTML)
     event.dataTransfer.setData("text", event.target.children[0].innerHTML); // or "text/plain" but just "text" would also be fine since we are not setting any other type/format for data value
     
 }
@@ -7,9 +7,9 @@ function dragStart(event) {
 //Events fired on the drop target
 
 function dragEnter(event) {
-    if(!event.target.classList.contains("dropped")) {
+     
     event.target.classList.add("droppable-hover");
-    }
+    
 }
 
 function dragOver(event) {

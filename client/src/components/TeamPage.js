@@ -121,7 +121,7 @@ export default function TeamPage(){
                         {members.map(member => (
                         <>
                         <Row>
-                        <Col md = {3}><Avatar>{member.memberName ? member.memberName[0] : "A"}</Avatar></Col>
+                        <Col md = {3}><Avatar>{member.memberName?member.memberName[0] : "A"}</Avatar></Col>
                         <Col md = {5}>        
                         <Row><text className = "MemberName">{member.memberName}</text></Row>
                         <Row><text className = "MemberEmail">{member.memberEmail}</text></Row>
@@ -179,6 +179,5 @@ export default function TeamPage(){
         </div>
     )
 }
-
 
 

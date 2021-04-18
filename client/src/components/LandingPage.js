@@ -3,9 +3,11 @@ import NavBar from './NavBar'
 import landing_img from '../asserts/landing_illu.svg';
 // import landing_img2 from '../asserts/landing_illu2.svg';
 import top_circle from '../asserts/top_circle.svg';
+import cloud from '../asserts/cloud.svg';
 import Button from 'react-bootstrap/Button'
 import LandingImage from '../asserts/landing_illu2';
 import firebase , {auth}from './Firebase';
+import {useAuthState} from 'react-firebase-hooks/auth';
 
 //import { signInwithGoogle } from './SignIn';
 
@@ -14,7 +16,15 @@ import firebase , {auth}from './Firebase';
 
 
 function LandingPage(props) {
-    const {setCurrentUser } = props
+    const [user] = useAuthState(auth);
+    const {setCurrentUser , currentUser } = props
+    const [isLogin, setIsLogin] = React.useState(false)
+    React.useEffect(() =>{
+        const _isLogin = currentUser?true : false;
+        setIsLogin(_isLogin)
+
+    }, [currentUser])
+
     const signInwithGoogle  =()=>{
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth()
@@ -32,6 +42,7 @@ function LandingPage(props) {
                     console.log(result)
                     //setEmail(result.additionalUserInfo.profile.email);
                     setCurrentUser(user)
+                    //window.open('http://localhost:3000/trackingsystem')
                    
                   
                 }).catch((error) => {
@@ -46,6 +57,23 @@ function LandingPage(props) {
                     // ...
                 });
             }
+
+    
+    
+    // function signIn(){
+    
+    //     var win = window.open('/systemtracking');
+    //     win.focus();
+    //     // window.oldOpen = window.open;
+    //     // window.open = function(url) { // reassignment function
+    //     //     win.location = url;
+    //     //     window.open = window.oldOpen;
+    //     //     win.focus();
+    //     // }
+    //     signInwithGoogle() 
+
+
+    // }
     
 
   
@@ -55,8 +83,8 @@ function LandingPage(props) {
         return (
             <>
        
-        
-            <img className = 'top-circle' src ={top_circle} />
+            {/* <NavBar hideLinks = {true} /> */}
+            <img className = {user?'top-circle moving-circle':'top-circle'} src ={cloud} />
         
             <main>
                 <section className = 'presentation'>
