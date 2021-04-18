@@ -7,6 +7,7 @@ import cloud from '../asserts/cloud.svg';
 import Button from 'react-bootstrap/Button'
 import LandingImage from '../asserts/landing_illu2';
 import firebase , {auth}from './Firebase';
+import {useAuthState} from 'react-firebase-hooks/auth';
 
 //import { signInwithGoogle } from './SignIn';
 
@@ -15,6 +16,7 @@ import firebase , {auth}from './Firebase';
 
 
 function LandingPage(props) {
+    const [user] = useAuthState(auth);
     const {setCurrentUser , currentUser } = props
     const [isLogin, setIsLogin] = React.useState(false)
     React.useEffect(() =>{
@@ -82,7 +84,7 @@ function LandingPage(props) {
             <>
        
             {/* <NavBar hideLinks = {true} /> */}
-            <img className = {isLogin?'top-circle moving-circle':'top-circle'} src ={cloud} />
+            <img className = {user?'top-circle moving-circle':'top-circle'} src ={cloud} />
         
             <main>
                 <section className = 'presentation'>
