@@ -51,6 +51,16 @@ function LandingPage(props) {
                     //setEmail(result.additionalUserInfo.profile.email);
                     setCurrentUser(user)
                     //window.open('http://localhost:3000/trackingsystem')
+
+                    // TODO if first time sign in record the name and email address 
+                    // write use name and email to database 
+                    //setEmail(result.additionalUserInfo.profile.email);
+                    const receiverProjectId  = 'project111231414'
+                    firebase.database().ref('projects/' + receiverProjectId + '/members/' +user.uid + "/memberEmail"   ).set( result.additionalUserInfo.profile.email)
+                    firebase.database().ref('projects/' + receiverProjectId + '/members/' +user.uid+ "/memberName"   ).set(result.additionalUserInfo.profile.name)
+
+                   
+
                    
                   
                 }).catch((error) => {

@@ -125,8 +125,8 @@ export default function TeamPage(){
                         <Row>
                         <Col md = {3}><Avatar>{member.memberName?member.memberName[0] : "A"}</Avatar></Col>
                         <Col md = {5}>        
-                        <Row><text className = "MemberName">{member.memberName}</text></Row>
-                        <Row><text className = "MemberEmail">{member.memberEmail}</text></Row>
+                        <Row><text className = "MemberName">{member.memberName?member.memberName : "Anonymous"}</text></Row>
+                        <Row><text className = "MemberEmail">{member.memberEmail? member.memberEmail:"unknown"}</text></Row>
                         </Col>   
                             <Col md = {1}><Button 
                                 variant = "light"

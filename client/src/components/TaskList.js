@@ -34,11 +34,11 @@ function TaskList(){
 
             
             try{
-                if (ref.current){
+                if (ref.current ){
                     ref.current.addEventListener("dragstart", dragStart, false);
                     console.log(ref.current)
                     toRemove.push(()=>{
-                        ref.current.removeEventListener("dragstart", dragStart, false);
+                        return ref.current.removeEventListener("dragstart", dragStart, false);
                     })
     
                 }
