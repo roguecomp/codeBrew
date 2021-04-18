@@ -59,7 +59,7 @@ export default function TeamPage(){
     }
     return (
         <div>
-        <Container>
+        <Container  >
             <Row>
                 <Col md = {7}>
                     <div className = "Block1">
@@ -73,7 +73,7 @@ export default function TeamPage(){
                         </Row>
                         <text className="sortBy">Sort By: Newest</text>
                         <Row>
-                            <Col md = {2}><text className = "subTitle"> Task</text></Col>
+                            <Col md = {3}><text className = "subTitle"> Task</text></Col>
                             <Col md = {4}><text className = "subTitle"> description</text></Col>                       
                         </Row>
                         <hr className = "Sep"></hr>
@@ -81,21 +81,23 @@ export default function TeamPage(){
                         {tasks.map(task => (
                             <>
                             <Row>
-                                <Col md = {2}>                                   
-                                    <text>{task.name}</text>
+                                <Col md = {3}>                                   
+                                    <text className="MemberName">{task.name}</text>
                                 </Col>
-                                <Col md = {5}>
-                                    <text>{task.description}</text>
+                                <Col md = {4}>
+                                    <text className="MemberEmail">{task.description}</text>
                                 </Col>
                                 <Col md = {2}><Button 
                                     variant = "light"
                                     onClick = {handleEdit}
+                                    className = "team-button"
                                     >
                                     Edit
                                 </Button></Col>
                                 <Col><Button 
                                     variant = "light"
                                     onClick={() => handleDelete(task.id)}
+                                    className = "team-button"
                                     >
                                     Delete
                                 </Button></Col>                        
@@ -126,9 +128,10 @@ export default function TeamPage(){
                         <Row><text className = "MemberName">{member.memberName}</text></Row>
                         <Row><text className = "MemberEmail">{member.memberEmail}</text></Row>
                         </Col>   
-                            <Col md = {3}><Button 
+                            <Col md = {1}><Button 
                                 variant = "light"
                                 onClick = {handleRemove}
+                                className = "team-button"
                                 >
                                 Remove
                             </Button></Col>                      
