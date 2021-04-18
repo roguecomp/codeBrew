@@ -9,16 +9,22 @@ import NavBar from './NavBar'
 import TeamPage from './TeamPage'
 import firebase, {auth} from './Firebase'
 import {useAuthState} from 'react-firebase-hooks/auth';
+import Aos from 'aos'
 
 
 
 function App() {
+  
   const [user] = useAuthState(auth);
   
   // console.log(initPage)
   const [currentPage, setCurrentPage] = React.useState('landing')
   const [currentUser, setCurrentUser] =React.useState()
 
+  React.useEffect(()=>{
+    Aos.init({duration : 2000})
+
+  }, [])
   React.useEffect( () =>{
     if (user){
       setCurrentPage('home')

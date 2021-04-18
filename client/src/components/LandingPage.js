@@ -8,6 +8,13 @@ import Button from 'react-bootstrap/Button'
 import LandingImage from '../asserts/landing_illu2';
 import firebase , {auth}from './Firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
+import AppDescriptionElement from './AppDescriptionElement'
+import appDes from '../asserts/appDescription.json'
+import laptop from '../asserts/laptop.svg';
+import track_time from '../asserts/track_time.svg';
+import visualisation from '../asserts/visualisation.svg';
+import team_space from '../asserts/team_space.svg';
+
 
 //import { signInwithGoogle } from './SignIn';
 
@@ -16,6 +23,7 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 
 
 function LandingPage(props) {
+    const imgsrcs = [team_space, laptop, track_time, visualisation];
     const [user] = useAuthState(auth);
     const {setCurrentUser , currentUser } = props
     const [isLogin, setIsLogin] = React.useState(false)
@@ -88,9 +96,9 @@ function LandingPage(props) {
         
             <main>
                 <section className = 'presentation'>
-                    <div className = "intro">
+                    <div className = "intro"  >
                         <div className = "intro-text">
-                            <h1>Make Team Contribution Tracking Effortless</h1>
+                            <h1>Make Team Time Tracking Effortless</h1>
                         </div>
                         <div className = 'button-wrapper'>
                             <Button style = {{background:"#6C63FF" ,borderColor:"#6C63FF" }} onClick={signInwithGoogle}>Sign up with google</Button>
@@ -102,12 +110,26 @@ function LandingPage(props) {
 
                     </div>
                     
-                    <div className = 'landing-img'>
+                    <div className = 'landing-img'  >
                         {/* <img src ={landing_img2} /> */}
                         <LandingImage/>
                     </div>
 
+
+
                 </section>
+
+                <div className = "app-descriptions">
+                    <h2>How it works</h2>
+                    {
+                        appDes.contents.map((content, index) =>{
+                            return (
+                            
+                                <AppDescriptionElement key={index} index={index} title = {content.title} detailDes = {content.detail} img_src = {imgsrcs[index]}/>
+                            )
+                        })
+                    }
+                </div>
             </main>
             </>
         )

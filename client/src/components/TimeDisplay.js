@@ -7,6 +7,7 @@ import Badge from 'react-bootstrap/Badge'
 import {LogTimeRecord} from './LogEvent'
 import firebase, {auth} from './Firebase'
 
+
 function TimeDisplay(){
     const [totalTime, setTotalTimer] = useState(0)
     const [isRunning, setIsRunning] = useState(false)

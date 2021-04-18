@@ -1,0 +1,24 @@
+{
+    "contents":[{
+        "title" : "Create team space",
+        "detail" : "Easy set up with google account. Let us know who is on the team.",
+        "img_src" : "../asserts/team_space.svg"
+    },
+    {
+        "title" : "Add team tasks ",
+        "detail" : "Team tasks syncronise across all members in the team. ",
+        "img_src" : "../asserts/create_task.svg"
+    },
+    {
+        "title" : "Start tracking time ",
+        "detail" : "Team members track their time contribution during their individual working time. ",
+        "img_src" : "../asserts/laptop.svg"
+    },
+    {
+        "title" : "Time contribution report",
+        "detail" : "Visiualise time contribution. Provide encourge team members to work hard",
+        "img_src" : "../asserts/visualisation.svg"
+    }
+]
+    
+}
