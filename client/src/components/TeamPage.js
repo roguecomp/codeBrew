@@ -1,26 +1,18 @@
 import React, {useState, useEffect } from 'react'
-import { Button,Container,Col, Row } from 'react-bootstrap';
+import { Button,Container,Col, Row,Modal,Form } from 'react-bootstrap';
 import {Avatar} from '@material-ui/core'
 import firebase from './Firebase'
 import NavBar from './NavBar'
 import '../css/TeamPage.css'
 
 export default function TeamPage(){
-    /* expected struct:
-    { 
-            id : xxxxxxx
-            name: "task1",
-            description : "des1"  
-        } and 
-        { 
-            id : xxxxxxx
-            Avatar : "../asserts/avatar/1.png",
-            name: "zzpp",
-            email : "e1"  
-        }
-        */
     const [tasks, setTasks] = useState([])
     const [members, setMembers] = useState([])
+    const [show, setShow] = useState(false)
+    const [newTaskName, setNewTaskName] = useState()
+    const [newTaskDes, setNewTaskDes] = useState()
+    const handleShow = () => setShow(true)
+    const handleClose = () => setShow(false)
     const projectId = 'project111231414';
     useEffect(() => {
         const tasksRef = firebase.database().ref('projects/' + projectId   + "/task");
@@ -35,7 +27,6 @@ export default function TeamPage(){
 
         const membersRef = firebase.database().ref('projects/' + projectId  + "/members");
         membersRef.on('value', (snapshot) => {
-            console.log(snapshot.val())
             const member = snapshot.val();
             const membersList = [];
             for (let _id in member) {
@@ -53,14 +44,18 @@ export default function TeamPage(){
     }
     const handleRemove = () => {}
     const handleAddTask = () => {
-        const taskName = "fake task" + tasks.length
-        const taskDescription = "Later on we will provide a form to fill the details of the task"
+        
+        const taskName = newTaskName
+        const taskDescription = newTaskDes
         const taskRef = firebase.database().ref('projects/' + projectId   + "/task");
         const newTask = {
             name: taskName,
             description : taskDescription,
         }
         taskRef.push(newTask)
+        setShow(false)
+        setNewTaskName()
+        setNewTaskDes()
     }
     return (
         <div>
@@ -73,7 +68,7 @@ export default function TeamPage(){
                                 <Col md ={7}><text className = "Title">Tasks</text>
                                 <text className = "Total">{tasks.length} total</text></Col>
                                 <div style = {{paddingTop : 15}}>
-                                    <Col><button className = "AddButton" onClick = {handleAddTask}>+ Add New Task</button></Col>
+                                    <Col><button className = "AddButton" onClick = {handleShow}>+ Add New Task</button></Col>
                                 </div>
                         </Row>
                         <text className="sortBy">Sort By: Newest</text>
@@ -126,7 +121,7 @@ export default function TeamPage(){
                         {members.map(member => (
                         <>
                         <Row>
-                        <Col md = {3}><Avatar>{member.memberName[0]}</Avatar></Col>
+                        <Col md = {3}><Avatar>{member.memberName ? member.memberName[0] : "A"}</Avatar></Col>
                         <Col md = {5}>        
                         <Row><text className = "MemberName">{member.memberName}</text></Row>
                         <Row><text className = "MemberEmail">{member.memberEmail}</text></Row>
@@ -147,6 +142,40 @@ export default function TeamPage(){
                 </Col>
             </Row>
         </Container>
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Add New Task</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            <Form>
+                <Form.Group>
+                    <Form.Label>Task name</Form.Label>
+                    <Form.Control 
+                        className = "taskName" 
+                        type="text" 
+                        placeholder="Enter task name here"
+                        value = {newTaskName} 
+                        onChange = {e => setNewTaskName(e.target.value)}
+                        
+                        
+                    />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control 
+                    className = "taskDesc" 
+                    as="textarea" 
+                    rows={4} 
+                    placeholder = "Give a description here"
+                    value={newTaskDes}
+                    onChange={e => setNewTaskDes(e.target.value)}/>
+                </Form.Group>       
+                <Button variant="primary" onClick = {handleAddTask}>
+                    Add
+                </Button>
+            </Form>
+            </Modal.Body>
+        </Modal>
         </div>
     )
 }
