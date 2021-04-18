@@ -109,6 +109,13 @@ nav{
   
 }
 
+.intro-text{
+  background: linear-gradient(261.81deg, #A620D6 8.88%, rgba(201, 47, 255, 0) 109.31%),
+  linear-gradient(0deg, #000000, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
 
 .intro-sub-text{
   color : rgba(0, 0, 0, 0.6);

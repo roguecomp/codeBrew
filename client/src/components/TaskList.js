@@ -32,18 +32,19 @@ function TaskList(){
         const toRemove = []
         taskRefs.current.map((ref, index)=>{
 
-            ref.current.addEventListener("dragstart", dragStart, false);
+            
             try{
                 if (ref.current){
-                    console.log('ref pushed')
+                    ref.current.addEventListener("dragstart", dragStart, false);
+                    console.log(ref.current)
                     toRemove.push(()=>{
                         ref.current.removeEventListener("dragstart", dragStart, false);
                     })
     
                 }
 
-            }catch{
-                console.log("ref.current is null", ref.current)
+            }catch(err){
+                console.log("ref.current is null", err)
             }
             
             

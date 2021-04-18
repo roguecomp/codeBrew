@@ -14,7 +14,7 @@ function TimeDisplay(){
     const [key, setKey] = useState(0);
     const [currentTask, setCurrentTask] = useState("")
     const [ringCompleted, setRingCompleted] = useState(false)
-    const total_time = 5;
+    const total_time = 1 * 60 * 60;
 
 
     // drop event listener 
