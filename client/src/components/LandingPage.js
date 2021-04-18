@@ -130,6 +130,12 @@ function LandingPage(props) {
                         })
                     }
                 </div>
+
+                <div className ="about-us">
+                    {/* <h4>Contact Us</h4>
+                    <p>Email : placeholder@gmail.com</p> */}
+
+                </div>
             </main>
             </>
         )

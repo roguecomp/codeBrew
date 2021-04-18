@@ -63,11 +63,22 @@ header {
 
 .project-name-container{
   flex : 1;
+  height : 100%;
   color :#2436D3;
   font-weight: bold;
   cursor: pointer;
+  margin-bottom: 10px;
+  /* background-image: url(../asserts/trackOnTriLogo.svg) no-repeat; */
+  /* background-position: right;  */
 
 }
+
+.project-name-container img{
+  height : 6vh;
+  margin-left : 10px;
+
+}
+
 
 nav{
   flex : 1;
@@ -112,6 +123,16 @@ nav{
   align-items: center;
 
 }
+
+.about-us{
+  background-color: #B8CCFF;
+  height : 20vh;
+  margin-top : 10em;
+  text-align : left;
+  padding : 2em;
+  display : flex;
+}
+
 
 /* .intro{
   display : flex;

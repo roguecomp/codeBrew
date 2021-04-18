@@ -1,4 +1,5 @@
 import React from 'react';
+import Logo from '../asserts/trackOnTriLogo.svg'
 
 function NavBar(props){
     const {hideLinks, setCurrentPage} = props
@@ -6,9 +7,11 @@ function NavBar(props){
         <header style = {{background: hideLinks? "#FFFFFF" : "#EFEFEF"}}>
             <div className="header-container" >
             <div className = 'project-name-container'>
+                <img src={Logo}/>
                 <span className="project-name"
                 onClick = {()=>{setCurrentPage("landing")}}
                 >TrackOnTri</span>
+                
 
             </div>
             <nav>
